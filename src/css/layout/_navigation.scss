@@ -1,0 +1,66 @@
+/* DT207G - Backend-baserad webbutveckling
+ * Moment 3
+ * Linn Eriksson, VT24
+ */
+ 
+//Layout for navigation.
+nav {
+    background: $theme-secondary-color;
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+
+
+    //Give links in the list the illusion of being buttons.
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            
+            padding: $general-padding;
+            margin: 0;
+            border: 2px solid $theme-secondary-color;
+
+            a {
+                text-decoration: none;
+                color: $theme-primary-color;
+            }
+        }
+
+        li:hover, .current {
+            background: $theme-primary-color;
+            a {
+                color: $theme-secondary-color;
+            }
+        }
+    }
+}
+
+//Make a navigation bar on larger screens. 
+@media only screen and (min-width: $screen-min-width){
+    nav {
+
+        border-top: 5px solid $theme-secondary-color;
+        border-bottom: 10px solid $theme-primary-color;
+        padding: 0 $general-padding;
+        li {
+            float: left;
+            margin: 0 10px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        li.current {
+            border: 2px solid $theme-primary-color;
+
+        }
+    }
+}
+
+//Remove float after nav-bar.
+nav::after {
+    content: "";
+    clear: both;
+    display: table;
+}

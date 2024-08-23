@@ -1,0 +1,15 @@
+/* DT207G - Backend-baserad webbutveckling
+ * Moment 3
+ * Linn Eriksson, VT24
+ */
+
+//General layout for buttons.
+
+.button {
+    background-color: $button-background-color;
+    color: $button-text-color;
+    border: $button-border;
+    border-radius: $button-border-radius;
+    padding: 8px 12px;
+    margin: 1%;
+}

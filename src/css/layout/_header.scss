@@ -1,0 +1,25 @@
+/* DT207G - Backend-baserad webbutveckling
+ * Moment 3
+ * Linn Eriksson, VT24
+ */
+
+//Layout for header.
+header {
+    background: $dark-secondary-color;
+    padding: $general-padding;
+    margin: 0;
+    text-align: center;
+
+    a {
+        text-decoration: none;
+
+        h1 {
+            color: $theme-primary-color;
+        }
+    }
+
+    p {
+        color: $theme-primary-color;
+        width: 100%;
+    }
+}

@@ -1,0 +1,39 @@
+/* DT207G - Backend-baserad webbutveckling
+ * Moment 3
+ * Linn Eriksson, VT24
+ */
+
+//Variables used in other files.
+
+//Importing fonts.
+@import url('https://fonts.googleapis.com/css?family=Space+Mono|Muli');
+
+//Colors
+$theme-primary-color: #f1f1f1;
+$dark-primary-color: scale-color($theme-primary-color, $lightness: -50%);
+$light-primary-color: scale-color($theme-primary-color, $lightness: 50%);
+
+$theme-secondary-color: #208208;
+$dark-secondary-color: scale-color($theme-secondary-color, $lightness: -50%);
+$light-secondary-color: scale-color($theme-secondary-color, $lightness: 80%);
+
+//Buttons
+$button-background-color: $theme-secondary-color;
+$button-text-color:  $theme-primary-color;
+$button-border-color:  $theme-primary-color;
+$button-border-radius: 10px;
+$button-border: 1px solid $button-border-color;
+
+//Fonts
+$serif-font: Georgia, serif;
+$sans-serif-font: "Muli", Verdana, sans-serif;
+$mono-space-font: "Space Mono", monospace;
+
+//Variable for "normal body text".
+$normal-font-size: 1.6em;
+
+//Variable for media-query related to "full screen".
+$screen-min-width: 750px;
+
+//Variable for general padding.
+$general-padding: 2%;

@@ -1,0 +1,49 @@
+/* DT207G - Backend-baserad webbutveckling
+ * Moment 3
+ * Linn Eriksson, VT24
+ */
+
+/*  This component requires JavaScript to work as intended.
+    The idea is that things of class "collapse" are hidden and h3s of class 
+    "jobs" are differently styled. When clicking on a h3.jobs the things in
+    .collapse will be shown. The main reason for this is that all the information
+    made for a very wide/ugly table and therefor article-elements with collapse
+    seemed like a cleaner option.
+*/
+
+//Make things of class "collapse" hidden.
+div.collapse {
+    display: none;
+    overflow: hidden;
+    
+    h4 {
+        padding: $general-padding;
+        margin: 0;
+    }
+
+    p {
+        width: 95%;
+        margin: 0;
+        padding: $general-padding;
+    }
+
+    p.right {
+        text-align: right;
+    }
+}
+
+//Style headers to look like buttons.
+.jobheaders {
+    border-bottom: 2px solid $dark-secondary-color;
+    border-radius: 5px;
+    background-color: $theme-secondary-color;
+    color: $theme-primary-color;
+    padding: 2%;
+    margin: 0;
+    cursor: pointer;
+}
+
+//Make headers look good when jobcard is "opened".
+.active {
+    border-radius: 5px 5px 0 0;
+}
