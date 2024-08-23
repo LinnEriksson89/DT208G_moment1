@@ -1,0 +1,31 @@
+{
+  "name": "dt208g_moment1",
+  "version": "1.0.0",
+  "description": "Moment 1 in DT207G",
+  "main": "index.html",
+  "scripts": {
+    "test": "\"echo Hello World!\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinnEriksson89/DT208G_moment1.git"
+  },
+  "author": "Linn Eriksson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LinnEriksson89/DT208G_moment1/issues"
+  },
+  "homepage": "https://github.com/LinnEriksson89/DT208G_moment1#readme",
+  "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "gulp-html-minifier-terser": "^7.1.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "parcel": "^2.12.0",
+    "sass": "^1.62.1"
+  },
+  "dependencies": {
+    "gulp": "^4.0.0",
+    "gulp-cli": "^3.0.0"
+  }
+}
