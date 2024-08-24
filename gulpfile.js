@@ -9,12 +9,14 @@ const browserSync = require('browser-sync').create();
 const htmlminify = require('gulp-html-minifier-terser');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass')(require('sass'));
+const concat = require('gulp-concat');
+const babel = require('gulp-typescript-babel');
 
 //Paths
 const files = {
     htmlPath: "src/**/*.html",
     sassPath: "src/css/**/*.scss",
-    jsPath: "src/js/**/*.js",
+    tsPath: "src/ts/**/*.ts",
     imagePath: "src/images/*"
 }
 
@@ -29,7 +31,7 @@ function htmlTask() {
 function sassTask() {
     return src(files.sassPath)
     .pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'compressed'}).on("error", sass.logError))// {outputStyle: 'compressed'} ska läggas till i sass() när testning är klar
+    .pipe(sass({outputStyle: 'compressed'}).on("error", sass.logError))
     .pipe(sourcemaps.write('./maps'))
     .pipe(dest("pub/css"))
     .pipe(browserSync.stream());
@@ -41,6 +43,14 @@ function imageTask() {
     .pipe(dest('pub/images'));
 }
 
+//TS-task
+function tsTask() {
+    return src(files.tsPath)
+    .pipe(babel({incremental: true}, {presets: ['es2015']}))
+    .pipe(concat('main.js'))
+    .pipe(dest('pub/js'))
+}
+
 //Watcher
 function watchTask() {
 
@@ -48,11 +58,11 @@ function watchTask() {
         server: "./pub"
     });
 
-    watch([files.htmlPath, files.sassPath, files.imagePath], parallel(htmlTask, sassTask, imageTask)).on('change', browserSync.reload);
+    watch([files.htmlPath, files.sassPath, files.imagePath, files.tsPath], parallel(htmlTask, sassTask, imageTask, tsTask)).on('change', browserSync.reload);
 }
 
 //Run all tasks above
 exports.default = series(
-    parallel(htmlTask, sassTask, imageTask),
+    parallel(htmlTask, sassTask, imageTask, tsTask),
     watchTask
 );
