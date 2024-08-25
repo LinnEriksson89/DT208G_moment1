@@ -48,29 +48,66 @@ function addCourse(submit: Event): void {
     //Validate input.
     let codeLength: number = codeInput.value.length;
     if(codeLength === 6) {
-        let nameLength: number = nameInput.value.length;
+        let currentCode: string = codeInput.value;
+        let courseCodes: string [] = [];
+        let listOfCourses: Course[] = [];
+        let storedCourses = localStorage.getItem("courses") as string;
+        let codeExists: boolean = false;
+    
+        if(storedCourses == null){
+            //Should be pretty much impossible to end up here, but this keeps TS from screaming.
+            storedCourses = `[{}]`;
+        }
+    
+        listOfCourses = JSON.parse(storedCourses);
 
-        if(nameLength > 8 && nameLength < 65) {
-            let progressionLength: number = progressionInput.value.length;
+        //Add all course-codes to an array.
+        listOfCourses.forEach(course => {
+            courseCodes.push(course.code);
+        });
 
-            if(progressionLength === 1) {
+        //Check if code already exists.
+        for (let i = 0; i < courseCodes.length; i++) {
+            const code = courseCodes[i];
 
-                //Variables to transform needed parts to uppercase and for cleaner look.
-                let courseCode: string = codeInput.value.toUpperCase();
-                let courseName: string = nameInput.value;
-                let courseProgression: string = progressionInput.value.toUpperCase();
-                let courseSyllabus: string = "https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/" + courseCode;
+            //If there's a match, set bool to true and close loop.
+            if(code === currentCode) {
+                codeExists = true;
+                i = courseCodes.length + 1;
+            }   
+        }
 
-                const newCourse: Course = {
-                    code: courseCode,
-                    name: courseName,
-                    progression: courseProgression,
-                    syllabus: courseSyllabus
+
+        if(codeExists) {
+            let spanEl = document.getElementById("message") as HTMLSpanElement;
+
+            spanEl.textContent = "Kursen finns redan och kan inte läggas till!";
+
+        } else {
+            let nameLength: number = nameInput.value.length;
+
+            if(nameLength > 8 && nameLength < 65) {
+                let progressionLength: number = progressionInput.value.length;
+
+                if(progressionLength === 1) {
+
+                    //Variables to transform needed parts to uppercase and for cleaner look.
+                    let courseCode: string = codeInput.value.toUpperCase();
+                    let courseName: string = nameInput.value;
+                    let courseProgression: string = progressionInput.value.toUpperCase();
+                    let courseSyllabus: string = "https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/" + courseCode;
+
+                    const newCourse: Course = {
+                        code: courseCode,
+                        name: courseName,
+                        progression: courseProgression,
+                        syllabus: courseSyllabus
+                    }
+                    
+                    let courses: Course[] = saveCourse(newCourse);
+                    printCourses(courses);
+                    clearForm(codeInput, nameInput, progressionInput);
                 }
-                
-                let courses: Course[] = saveCourse(newCourse);
-                printCourses(courses);
-                clearForm(codeInput, nameInput, progressionInput);
             }
         }
     }
@@ -248,4 +285,7 @@ function clearForm(codeInput: HTMLInputElement, nameInput: HTMLInputElement, pro
     nameInput.value = ""; 
     progressionInput.value = "";
 
+    //Clear span-message if exists.
+    let spanEl = document.getElementById("message") as HTMLSpanElement;
+    spanEl.textContent = "";
 }
