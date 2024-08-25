@@ -21,7 +21,9 @@
         position: absolute;
         top: 10px;
         left: 10px;
-        background-color: $theme-primary-color;
+        background-color: $theme-secondary-color;
+        opacity: 0.00001;
+        border: 0 solid $theme-secondary-color;
     }
 
     .skiplink:focus {
