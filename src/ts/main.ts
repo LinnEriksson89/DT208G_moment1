@@ -48,7 +48,7 @@ function addCourse(submit: Event): void {
     //Validate input.
     let codeLength: number = codeInput.value.length;
     if(codeLength === 6) {
-        let currentCode: string = codeInput.value;
+        let currentCode: string = codeInput.value.toUpperCase();
         let courseCodes: string [] = [];
         let listOfCourses: Course[] = [];
         let storedCourses = localStorage.getItem("courses") as string;
