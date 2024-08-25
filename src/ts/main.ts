@@ -113,6 +113,8 @@ function printCourses(courses: Course[]): void {
 
         //Add headers and content.
         trH.innerHTML = "<th>Kurskod</th><th>Kursnamn</th><th>Progression</th><th>Uppdatera</th><th>Radera</th>";
+        trH.style.borderBottom = "2px #208208 solid";
+        trH.style.textAlign = "left";
 
         //Use foreach to add each row of the table.
         courses.forEach(course=> {
@@ -123,9 +125,10 @@ function printCourses(courses: Course[]): void {
             }
         });
 
-        //Create actual table and append to div.
+        //Create actual table, final styling and append to div.
         table.appendChild(tableHeader);
         table.appendChild(tableBody);
+        table.style.width = "100%";
         coursesDiv.appendChild(table);
 
         //Make update- and deletbuttons work.
