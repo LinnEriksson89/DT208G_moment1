@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment 1 - DT208G</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <a href="#maincontent" class="skiplink button">Gå till huvudinnehåll</a>
+            <a href="index.html">
+                <h1>Programmering i TypeScript - DT208G</h1>
+            </a>
+            <p>Moment 1</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Start</a></li>
+                <li class="current"><a href="courses.html">Kurser</a></li>
+            </ul>
+        </nav>
+        <main id="maincontent">
+            <h2>Kurser:</h2>
+            <div id="coursesdiv">
+                <p>Det finns inga kurser att visa just nu.</p>
+                <noscript><p>Kurserna visas med JavaScript, du måste därför tillåta JavaScript i din webbläsare för att kurserna ska kunna visas.</p></noscript>
+            </div>
+        
+            <h2>Lägg till kurs:</h2>
+            <form method="post" action="">
+                <fieldset>
+                    <legend>Ny kurs:</legend>
+                    <label for="course_code">Kurskod:</label>
+                    <input type="text" id="course_code" name="course_code" maxlength="8" required>
+                    <br>
+                    <label for="course_name">Kursnamn:</label>
+                    <input type="text" id="course_name" name="course_name" maxlength="64" required>
+                    <br>
+                    <label for="progression">Progression:</label>
+                    <input type="text" id="progression" name="progression" maxlength="1" required>
+                    <br>
+                    <br>
+                    <input type="reset" value="Rensa" class="button"><input type="submit" value="Lägg till"
+                        id="submit_course" class="button">
+                </fieldset>
+            </form>
+        </main>
+        <footer>
+            <p>Webbplats skapad som en del av <a
+                    href="https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/DT208G">Programmering i TypeScript</a> av <a href="mailto:lier2209@student.miun.se">Linn Eriksson</a>.</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
